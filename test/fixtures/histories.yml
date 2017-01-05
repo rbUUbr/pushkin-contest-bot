@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  answer: MyString
+  passed: false
+  question: MyString
+
+two:
+  answer: MyString
+  passed: false
+  question: MyString
