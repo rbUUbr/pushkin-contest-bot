@@ -3,7 +3,7 @@ lock "3.7.1"
 set :application, "pushkin-constest-bot"
 set :repo_url, "git@github.com:rbUUbr/pushkin-contest-bot.git"
 
-set :deploy_to, "/var/deploy/pushkin-constest-bot"
+set :deploy_to, "/var/deploy/pushkin-contest-bot"
 
 set :rails_env, 'production'
 set :rvm_type, :user
