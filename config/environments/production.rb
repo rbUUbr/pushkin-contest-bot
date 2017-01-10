@@ -9,7 +9,10 @@ Rails.application.configure do
   # and those relying on copy on write to perform better.
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
-
+  config.action_dispatch.rack_cache = {
+  metastore: "redis://localhost:6379/1/metastore",
+  entitystore: "redis://localhost:6379/1/entitystore"
+  }
   # Full error reports are disabled and caching is turned on.
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
@@ -54,7 +57,7 @@ Rails.application.configure do
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "pushka3_#{Rails.env}"
+  # config.active_job.queue_name_prefix = "pushkin-resolver_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.

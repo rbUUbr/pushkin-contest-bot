@@ -10,17 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170105182016) do
+ActiveRecord::Schema.define(version: 20170108164911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "histories", force: :cascade do |t|
-    t.string   "answer"
-    t.boolean  "passed"
     t.string   "question"
+    t.integer  "level"
+    t.string   "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "line_symbols", force: :cascade do |t|
+    t.string  "text"
+    t.integer "count"
+    t.integer "line_id"
+    t.index ["line_id"], name: "index_line_symbols_on_line_id", using: :btree
+  end
+
+  create_table "lines", force: :cascade do |t|
+    t.string  "text"
+    t.integer "poem_id"
+    t.string  "sorted_line"
+    t.index ["poem_id"], name: "index_lines_on_poem_id", using: :btree
+  end
+
+  create_table "poems", force: :cascade do |t|
+    t.string "title"
+  end
+
+  create_table "words", force: :cascade do |t|
+    t.string  "text"
+    t.integer "line_id"
+    t.index ["line_id"], name: "index_words_on_line_id", using: :btree
+  end
+
+  add_foreign_key "line_symbols", "lines"
+  add_foreign_key "lines", "poems"
+  add_foreign_key "words", "lines"
 end

@@ -2,4 +2,6 @@
 
 require_relative 'config/environment'
 
+$redis = Redis.new
+
 run Rails.application
