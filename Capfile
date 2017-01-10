@@ -1,6 +1,6 @@
 # Load DSL and set up stages
 require "capistrano/setup"
-
+#include 'assets'
 require "capistrano/deploy"
 require "capistrano/rails"
 require 'capistrano/puma'
